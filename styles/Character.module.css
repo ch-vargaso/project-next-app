@@ -1,0 +1,41 @@
+.page_container{
+    /* border: yellow 2px solid; */
+    height: 80vh;
+
+}
+.bt{
+    height: 40px;
+    border-radius: 10px;
+    border: transparent;
+    background-color: rgb(14, 106, 171);
+    width: 120px;
+    margin: 10px;
+    font-size: 15px;
+}
+.bt:hover {
+    background-color: rgba(14, 106, 171, 0.836);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.bt:active{
+    background-color: rgb(14, 114, 185);
+}
+
+.card_container{
+    /* border: 2px red solid; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    display: flex;
+    /* border: yellow 2px solid; */
+    gap: 30px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+}
+

@@ -1,0 +1,13 @@
+.container{
+    position: sticky;
+    display: flex;
+    background-color: rgb(14, 106, 171);
+    height: 50px;
+    align-items: center;
+    gap: 18px;
+    font-size: 17px;
+    font-weight: 500;
+    padding-left: 20px;
+    overflow: hidden;
+
+}

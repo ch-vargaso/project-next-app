@@ -1,0 +1,23 @@
+.title{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    border: rgb(155, 152, 152) 1px  solid;
+    gap: 10px;
+    margin: 4px;
+}
+.table{
+    border: 2px rgb(178, 185, 165) solid;
+    margin: auto;
+    width: 80%;
+}
+
+.table th{
+    border: blue 1px solid;
+}
+.table td{
+    border: orange 1px solid;
+}
