@@ -13,7 +13,7 @@ type Props = {
   result: Character;
 };
 
-const character = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Character = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   // const character = (props: Props) => {
   const router = useRouter();
   const character = props.result;
@@ -33,7 +33,7 @@ const character = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       </Link>
       <div key={character.id} className={characterCard.card_container}>
         <div className={characterCard.card}>
-          <img src={character.image} alt={`cover image of ${character.name}`} />
+          {/* <img src={character.image} alt={`cover image of ${character.name}`} /> */}
           <div className={characterCard.info}>
             <h2>{character.name}</h2>
             <p>Gender: {character.gender}</p>
@@ -57,7 +57,7 @@ const character = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     </div>
   );
 };
-export default character;
+export default Character;
 
 // backend ############################################
 
@@ -65,38 +65,38 @@ export default character;
 // pero y que pasa si no sé cuantos objetos voy a recibir??????
 // para eso está este segundo ejemplo tomado de 'Net Ninja' en YouTube = Next.js Tutorial #12,#13 
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const paths = [];
-//   for (let i = 1; i <= 20; i++) {
-//     const id = i.toString();
-//     const path = `characters/${id}`;
-//     paths.push({ params: { id } });
-//     console.log("currentIds :>> ", paths);
-//   }
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = [];
+  for (let i = 1; i <= 20; i++) {
+    const id = i.toString();
+    const path = `characters/${id}`;
+    paths.push({ params: { id } });
+    console.log("currentIds :>> ", paths);
+  }
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 // Aquí es el ejemplo tomado donde juego con el número de datos dados por la API ...
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch("https://rickandmortyapi.com/api/character");
-  const data = await response.json();
-  console.log('data to build all the fetches :>> ', data);
-  const paths = data.results.map((character: { id: { toString: () => string; }; }) => {
-    return {
-      params: {
-        id: character.id.toString()
-      }
-    }
-  })
-  return {
-    paths,
-    fallback: false
-  }
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const response = await fetch("https://rickandmortyapi.com/api/character");
+//   const data = await response.json();
+//   console.log('data to build all the fetches :>> ', data);
+//   const paths = data.results.map((character: { id: { toString: () => string; }; }) => {
+//     return {
+//       params: {
+//         id: character.id.toString()
+//       }
+//     }
+//   })
+//   return {
+//     paths,
+//     fallback: false
+//   }
+// };
 
 
 export const getStaticProps: GetStaticProps<{ result: Character }> = async (context) => {

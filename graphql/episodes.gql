@@ -1,0 +1,11 @@
+query listOfEpisodes {
+  episodes {
+    results {
+      id
+      name
+      characters {
+        image
+      }
+    }
+  }
+}

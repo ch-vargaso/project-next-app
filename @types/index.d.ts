@@ -34,3 +34,16 @@ type Episode = {
     created: string
 }
 
+type Episodes = {
+    episodes: {
+        results: {
+            id: string,
+            name: string,
+            characters: {
+                id: string,
+                image: string
+            }
+        }
+    }
+}
+
