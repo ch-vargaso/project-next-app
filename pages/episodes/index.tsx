@@ -3,6 +3,7 @@ import React from 'react'
 import styles from '../../styles/Episodes.module.css'
 import { gql, useQuery } from '@apollo/client'
 import GraphqlClientMainURL from '../../graphql/graphql-client';
+import Link from 'next/link';
 
 const GET_EPISODES = gql`
     query getEpisodes($page: Int, $filter: FilterEpisode){
@@ -41,16 +42,18 @@ type queryEpisode = {
     characters: Character[]
 }
 
-const episodes = (props: Props) => {
+const Episodes = (props: Props) => {
+    console.log('props :>> ', props.data.episodes);
+    const data = props.data
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { data, loading, error } = useQuery(GET_EPISODES);
-    console.log('data :>> ', data);
-    if (loading) {
-        return <p>loading...</p>
-    }
-    if (error) {
-        return <p>{error.message}</p>
-    }
+    // const { data, loading, error } = useQuery(GET_EPISODES);
+    // console.log('data :>> ', data);
+    // if (loading) {
+    //     return <p>loading...</p>
+    // }
+    // if (error) {
+    //     return <p>{error.message}</p>
+    // }
 
     return (
         <div>
@@ -69,7 +72,16 @@ const episodes = (props: Props) => {
                                 <th>{episode.name}</th>
                                 <th>
                                     {episode.characters.map((character: Character) => {
-                                        return <img key={character.id} src={character.image} width={50} height={50} />
+                                        return (
+                                            <>
+                                                <Link href={`/characters/${character.id}`}>
+                                                    <img key={character.id} src={character.image} width={50} height={50} />
+                                                    {/* <Image src={character.image}} alt={character.name} width={50} height={50} /> */}
+
+                                                </Link>
+                                            </>
+                                        )
+
                                     })}
                                 </th>
                             </tr>
@@ -82,8 +94,7 @@ const episodes = (props: Props) => {
     )
 };
 
-export default episodes
-
+export default Episodes
 
 // ###################  BACK END ###################
 
@@ -100,9 +111,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         props: { data },
     }
 }
-
-
-
 
 
 //  this is the other fetch learned from Emily without using apollo client 

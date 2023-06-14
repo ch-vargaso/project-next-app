@@ -3,6 +3,13 @@ interface Data{
 }
 type id = any
 
+type Info = {
+        count: number,
+        pages: number
+        next: number | null,
+        prev: number | null
+}
+
 type Character = {
     created: string,
         episode: [string],

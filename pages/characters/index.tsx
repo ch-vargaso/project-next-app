@@ -4,7 +4,7 @@ import Link from "next/link";
 import { type } from "os";
 import { error } from "console";
 import style1 from "../../styles/Characters.module.css";
-import Navbar from "../../components/Navbar";
+
 
 type Props = {
   result: Data;
@@ -49,9 +49,7 @@ type Data = {
 // let [url, setUrl] = useState("https://rickandmortyapi.com/api/character/?page=1");
 // esto puede ser interesante en caso que necesite aögun id para los characters individuales...
 
-export const getServerSideProps: GetServerSideProps<{ result: Data }> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps<{ result: Data }> = async (context) => {
   try {
     const response = await fetch("https://rickandmortyapi.com/api/character");
     const result = await response.json();
@@ -64,8 +62,6 @@ export const getServerSideProps: GetServerSideProps<{ result: Data }> = async (
 
 // Ejemplo de Fetch de rick and Morty
 
-// useEffect(() => {
 
-// }, [])
 
 // ejemplo de fetch para el trycatch....
